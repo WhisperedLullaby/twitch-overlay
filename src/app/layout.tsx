@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import Providers from '@/components/Providers'
 import './globals.css'
 
 const geistSans = localFont({
@@ -18,14 +19,16 @@ export const metadata: Metadata = {
 	description: 'Provides an overlay system for me as a streamer',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	)
 }
